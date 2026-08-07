@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Shower · 5 de Septiembre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,600;0,700;1,700&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F7F1E4;
+    --paper-deep: #EFE5D2;
+    --brown: #8B6B4E;
+    --brown-dark: #5E4630;
+    --blue-grey: #6E7A96;
+    --tan: #CBA57C;
+    --tan-dark: #A87C51;
+    --tan-darker: #8C6339;
+    --fur-light: #F3E6D2;
+    --blush: #E8B7B4;
+    --star: #D8CFBC;
+    --bunny: #E4CFB8;
+    --bunny-dark: #C8A986;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    min-height:100%;
+    font-family:'EB Garamond', serif;
+    color: var(--blue-grey);
+  }
+
+  body{
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(255,255,255,0.5), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(180,150,110,0.08), transparent 45%);
+  }
+
+  /* paper grain */
+  .grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- Nubes ---------- */
+  .cloud{
+    position:absolute;
+    background:#FEFBF4;
+    border-radius:100px;
+    opacity:0.75;
+    filter: drop-shadow(0 6px 10px rgba(139,107,78,0.12));
+  }
+  .cloud::before, .cloud::after{
+    content:"";
+    position:absolute;
+    background:#FEFBF4;
+    border-radius:100px;
+  }
+  .cloud1{ width:120px; height:44px; top:6%; left:-160px; animation: drift 30s linear infinite; }
+  .cloud1::before{ width:60px; height:60px; top:-28px; left:14px; }
+  .cloud1::after{ width:44px; height:44px; top:-18px; left:60px; }
+
+  .cloud2{ width:90px; height:34px; top:16%; left:-140px; animation: drift 38s linear infinite; animation-delay:-12s; opacity:0.55;}
+  .cloud2::before{ width:46px; height:46px; top:-20px; left:10px; }
+  .cloud2::after{ width:34px; height:34px; top:-12px; left:46px; }
+
+  .cloud3{ width:150px; height:50px; top:3%; left:-200px; animation: drift 46s linear infinite; animation-delay:-24s; opacity:0.45;}
+  .cloud3::before{ width:70px; height:70px; top:-32px; left:20px; }
+  .cloud3::after{ width:50px; height:50px; top:-20px; left:75px; }
+
+  @keyframes drift{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(160vw); }
+  }
+
+  /* ---------- Globos con fotos ---------- */
+  .balloon{
+    position:absolute;
+    width:108px;
+    height:132px;
+    border-radius:50% 50% 50% 50% / 58% 58% 42% 42%;
+    bottom:-200px;
+    opacity:0.96;
+    background-size: cover;
+    background-position: center;
+    box-shadow:
+      inset -10px -10px 18px rgba(0,0,0,0.18),
+      inset 8px 8px 14px rgba(255,255,255,0.35),
+      0 10px 20px -8px rgba(94,70,48,0.35);
+    border: 3px solid #FEFBF4;
+    animation: rise linear infinite;
+  }
+  .balloon::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-9px;
+    width:0; height:0;
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-top:11px solid #FEFBF4;
+    transform: translateX(-50%);
+  }
+  .balloon::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:100%;
+    width:1.5px;
+    height:70px;
+    background: rgba(94,70,48,0.3);
+    transform: translateX(-50%);
+  }
+
+  .bl1{ left:4%;  animation-duration:24s; animation-delay:0s; }
+  .bl2{ left:16%; animation-duration:28s; animation-delay:5s; width:88px; height:108px; opacity:0.85;}
+  .bl3{ left:76%; animation-duration:26s; animation-delay:2s; }
+  .bl4{ left:88%; animation-duration:30s; animation-delay:7s; width:92px; height:112px;}
+  .bl5{ left:46%; animation-duration:32s; animation-delay:11s; width:80px; height:98px; opacity:0.8;}
+  .bl6{ left:60%; animation-duration:27s; animation-delay:4s; }
+  .bl7{ left:30%; animation-duration:29s; animation-delay:9s; width:84px; height:104px; opacity:0.85;}
+  .bl8{ left:8%; animation-duration:25s; animation-delay:13s; width:78px; height:96px; opacity:0.8;}
+
+  @keyframes rise{
+    0%   { transform: translateY(0) translateX(0) rotate(-4deg); }
+    25%  { transform: translateY(-32vh) translateX(18px) rotate(4deg); }
+    50%  { transform: translateY(-64vh) translateX(-14px) rotate(-3deg); }
+    75%  { transform: translateY(-96vh) translateX(16px) rotate(4deg); }
+    100% { transform: translateY(-135vh) translateX(0) rotate(-2deg); }
+  }
+
+  /* ---------- Letras animadas del titulo ---------- */
+  .letter{
+    display:inline-block;
+    animation: letterWave 2.6s ease-in-out infinite;
+  }
+  @keyframes letterWave{
+    0%,100%{ transform: translateY(0) rotate(0deg); }
+    50%{ transform: translateY(-9px) rotate(-3deg); }
+  }
+
+  .stage{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 50px 16px 40px;
+    overflow:hidden;
+  }
+
+  /* ambient floating sparkles */
+  .sparkle{
+    position:absolute;
+    width:6px; height:6px;
+    background: var(--tan);
+    border-radius:50%;
+    opacity:0.5;
+    animation: floatUp linear infinite;
+  }
+  .s1{ left:12%; bottom:-20px; animation-duration:14s; animation-delay:0s; }
+  .s2{ left:85%; bottom:-20px; animation-duration:18s; animation-delay:3s; width:4px;height:4px; }
+  .s3{ left:50%; bottom:-20px; animation-duration:22s; animation-delay:6s; }
+  .s4{ left:70%; bottom:-20px; animation-duration:16s; animation-delay:9s; width:5px;height:5px; }
+  .s5{ left:25%; bottom:-20px; animation-duration:20s; animation-delay:2s; width:4px;height:4px; }
+
+  @keyframes floatUp{
+    0%{ transform: translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.55; }
+    90%{ opacity:0.4; }
+    100%{ transform: translateY(-110vh) translateX(24px); opacity:0; }
+  }
+
+  .card{
+    position:relative;
+    z-index:5;
+    width:100%;
+    max-width:440px;
+    text-align:center;
+    padding: 0 30px 46px;
+  }
+
+  /* ---------- Oso ---------- */
+  .bear-hero{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    opacity:0;
+    animation: bearIn 0.9s ease-out forwards;
+  }
+  @keyframes bearIn{
+    from{ opacity:0; transform: translateY(-14px) scale(0.92); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
+  .bear-float{
+    animation: bearBreathe 4s ease-in-out infinite;
+  }
+  @keyframes bearBreathe{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-5px); }
+  }
+
+  /* ---------- Cintillo con nombre ---------- */
+  .ribbon-wrap{
+    position:relative;
+    margin-top:-34px;
+    opacity:0;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+  .ribbon-tail{
+    position:absolute;
+    top:14px;
+    width:70px;
+    height:56px;
+  }
+  .ribbon-tail.left{ left:-2px; }
+  .ribbon-tail.right{ right:-2px; transform: scaleX(-1); }
+
+  .ribbon-band{
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+    border-top: 1px solid rgba(139,107,78,0.35);
+    border-bottom: 1px solid rgba(139,107,78,0.35);
+    padding: 16px 40px;
+    display:inline-block;
+    min-width: 220px;
+  }
+  .baby-name{
+    font-family:'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--brown-dark);
+    letter-spacing: 0.5px;
+  }
+
+  /* ---------- Titulares ---------- */
+  .script-title{
+    font-family:'Alex Brush', cursive;
+    font-size: 3.1rem;
+    color: var(--brown);
+    margin: 18px 0 14px;
+    opacity:0;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 0.75s;
+  }
+
+  .invite-text{
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--blue-grey);
+    margin-bottom: 28px;
+    opacity:0;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 0.95s;
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(14px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ---------- Fecha ---------- */
+  .date-block{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 26px;
+    border-top: 1px solid rgba(110,122,150,0.4);
+    border-bottom: 1px solid rgba(110,122,150,0.4);
+    padding: 18px 0;
+    margin-bottom: 30px;
+    opacity:0;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 1.15s;
+  }
+  .date-day, .date-time{
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    color: var(--blue-grey);
+  }
+  .date-center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    line-height:1;
+  }
+  .date-num{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size: 3.2rem;
+    color: var(--blue-grey);
+  }
+  .date-month{
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* ---------- Direccion ---------- */
+  .address-block{
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--blue-grey);
+    margin-bottom: 34px;
+    opacity:0;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 1.3s;
+  }
+  .address-block strong{
+    font-weight:600;
+  }
+
+  /* ---------- Cierre ---------- */
+  .closing{
+    position:relative;
+    min-height: 170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    animation: fadeUp 0.8s ease-out forwards;
+    animation-delay: 1.5s;
+  }
+  .closing-title{
+    font-family:'Alex Brush', cursive;
+    font-size: 2.7rem;
+    color: var(--brown);
+    z-index:2;
+  }
+  .star-deco{
+    position:absolute;
+    left:0;
+    bottom:6px;
+    animation: starSpin 6s ease-in-out infinite;
+  }
+  @keyframes starSpin{
+    0%,100%{ transform: rotate(-6deg) scale(1); }
+    50%{ transform: rotate(6deg) scale(1.08); }
+  }
+  .bunny-deco{
+    position:absolute;
+    right:-6px;
+    bottom:-14px;
+    animation: bunnyHop 3.4s ease-in-out infinite;
+  }
+  @keyframes bunnyHop{
+    0%,100%{ transform: translateY(0) rotate(0deg); }
+    50%{ transform: translateY(-6px) rotate(2deg); }
+  }
+
+  /* ---------- Boton RSVP ---------- */
+  .rsvp{
+    display:inline-block;
+    margin-top: 8px;
+    background: var(--tan-dark);
+    color:#fff;
+    text-decoration:none;
+    font-family:'EB Garamond', serif;
+    font-weight:600;
+    letter-spacing: 0.5px;
+    font-size:1.05rem;
+    padding: 13px 32px;
+    border-radius: 40px;
+    box-shadow: 0 10px 20px -6px rgba(168,124,81,0.5);
+    animation: pulse 2.6s ease-in-out infinite;
+    position:relative;
+    z-index:3;
+  }
+  @keyframes pulse{
+    0%,100%{ transform: scale(1); box-shadow: 0 10px 20px -6px rgba(168,124,81,0.5); }
+    50%{ transform: scale(1.04); box-shadow: 0 14px 26px -6px rgba(168,124,81,0.7); }
+  }
+
+  @media (max-width:420px){
+    .baby-name{ font-size:2.1rem; }
+    .script-title{ font-size:2.5rem; }
+    .date-num{ font-size:2.6rem; }
+    .card{ padding: 0 18px 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition:none !important; opacity:1 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="stage">
+
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <div class="balloon bl1" style="background-image:url('img/foto1.jpg')"></div>
+  <div class="balloon bl2" style="background-image:url('img/foto2.jpg')"></div>
+  <div class="balloon bl3" style="background-image:url('img/foto3.jpg')"></div>
+  <div class="balloon bl4" style="background-image:url('img/foto4.jpg')"></div>
+  <div class="balloon bl5" style="background-image:url('img/foto5.jpg')"></div>
+  <div class="balloon bl6" style="background-image:url('img/foto6.jpg')"></div>
+  <div class="balloon bl7" style="background-image:url('img/foto7.jpg')"></div>
+  <div class="balloon bl8" style="background-image:url('img/foto8.jpg')"></div>
+
+  <div class="sparkle s1"></div>
+  <div class="sparkle s2"></div>
+  <div class="sparkle s3"></div>
+  <div class="sparkle s4"></div>
+  <div class="sparkle s5"></div>
+
+  <div class="card">
+
+    <div class="bear-hero">
+      <svg class="bear-float" width="230" height="230" viewBox="0 0 230 230" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="furGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#D8B98E"/>
+            <stop offset="100%" stop-color="#C29A6C"/>
+          </linearGradient>
+        </defs>
+        <!-- ears back -->
+        <circle cx="60" cy="60" r="30" fill="var(--tan-darker)"/>
+        <circle cx="170" cy="60" r="30" fill="var(--tan-darker)"/>
+        <circle cx="60" cy="60" r="16" fill="var(--tan)"/>
+        <circle cx="170" cy="60" r="16" fill="var(--tan)"/>
+        <!-- head -->
+        <circle cx="115" cy="120" r="82" fill="url(#furGrad)"/>
+        <!-- cheeks -->
+        <ellipse cx="70" cy="128" rx="16" ry="11" fill="var(--blush)" opacity="0.7"/>
+        <ellipse cx="160" cy="128" rx="16" ry="11" fill="var(--blush)" opacity="0.7"/>
+        <!-- muzzle -->
+        <ellipse cx="115" cy="140" rx="38" ry="30" fill="var(--fur-light)"/>
+        <!-- eyes -->
+        <circle cx="88" cy="104" r="6" fill="var(--brown-dark)"/>
+        <circle cx="142" cy="104" r="6" fill="var(--brown-dark)"/>
+        <circle cx="90" cy="102" r="1.6" fill="#fff"/>
+        <circle cx="144" cy="102" r="1.6" fill="#fff"/>
+        <!-- nose + mouth -->
+        <ellipse cx="115" cy="130" rx="10" ry="7" fill="var(--brown-dark)"/>
+        <path d="M115 137 Q115 148 103 150" stroke="var(--brown-dark)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M115 137 Q115 148 127 150" stroke="var(--brown-dark)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="ribbon-wrap">
+      <svg class="ribbon-tail left" viewBox="0 0 70 56" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,4 70,4 70,30 30,30 44,56 0,50" fill="var(--paper-deep)"/>
+      </svg>
+      <svg class="ribbon-tail right" viewBox="0 0 70 56" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,4 70,4 70,30 30,30 44,56 0,50" fill="var(--paper-deep)"/>
+      </svg>
+      <div class="ribbon-band">
+        <span class="baby-name">Gabriel</span>
+      </div>
+    </div>
+
+    <h1 class="script-title">
+      <span class="letter" style="animation-delay:0.00s">m</span><span class="letter" style="animation-delay:0.09s">i</span>&nbsp;<span class="letter" style="animation-delay:0.18s">b</span><span class="letter" style="animation-delay:0.27s">a</span><span class="letter" style="animation-delay:0.36s">b</span><span class="letter" style="animation-delay:0.45s">y</span>&nbsp;<span class="letter" style="animation-delay:0.54s">s</span><span class="letter" style="animation-delay:0.63s">h</span><span class="letter" style="animation-delay:0.72s">o</span><span class="letter" style="animation-delay:0.81s">w</span><span class="letter" style="animation-delay:0.90s">e</span><span class="letter" style="animation-delay:0.99s">r</span>
+    </h1>
+
+    <p class="invite-text">
+      Te invitamos a celebrar con nosotros<br>
+      la llegada de nuestro príncipe
+    </p>
+
+    <div class="date-block">
+      <span class="date-day">Sábado</span>
+      <div class="date-center">
+        <span class="date-num">05</span>
+        <span class="date-month">Septiembre</span>
+      </div>
+      <span class="date-time">15:30 p.m.</span>
+    </div>
+
+    <p class="address-block">
+      Zañartu 1145, depto 918<br>
+      salón de eventos<br>
+      <strong>No olvides confirmar asistencia</strong>
+    </p>
+
+    <div class="closing">
+      <svg class="star-deco" width="54" height="54" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,4 61,37 96,37 68,58 79,92 50,71 21,92 32,58 4,37 39,37"
+                 fill="var(--star)" opacity="0.85"/>
+      </svg>
+
+      <span class="closing-title"><span class="letter" style="animation-delay:0.05s">T</span><span class="letter" style="animation-delay:0.14s">e</span>&nbsp;<span class="letter" style="animation-delay:0.23s">e</span><span class="letter" style="animation-delay:0.32s">s</span><span class="letter" style="animation-delay:0.41s">p</span><span class="letter" style="animation-delay:0.50s">e</span><span class="letter" style="animation-delay:0.59s">r</span><span class="letter" style="animation-delay:0.68s">a</span><span class="letter" style="animation-delay:0.77s">m</span><span class="letter" style="animation-delay:0.86s">o</span><span class="letter" style="animation-delay:0.95s">s</span></span>
+
+      <svg class="bunny-deco" width="90" height="100" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="30" cy="16" rx="8" ry="24" fill="var(--bunny)" transform="rotate(-14 30 16)"/>
+        <ellipse cx="58" cy="16" rx="8" ry="24" fill="var(--bunny)" transform="rotate(14 58 16)"/>
+        <ellipse cx="30" cy="18" rx="4" ry="16" fill="var(--bunny-dark)" opacity="0.5" transform="rotate(-14 30 18)"/>
+        <ellipse cx="58" cy="18" rx="4" ry="16" fill="var(--bunny-dark)" opacity="0.5" transform="rotate(14 58 18)"/>
+        <circle cx="44" cy="55" r="30" fill="var(--bunny)"/>
+        <circle cx="34" cy="50" r="2.4" fill="var(--brown-dark)"/>
+        <circle cx="54" cy="50" r="2.4" fill="var(--brown-dark)"/>
+        <ellipse cx="44" cy="60" rx="4" ry="3" fill="var(--bunny-dark)"/>
+        <ellipse cx="20" cy="80" rx="10" ry="14" fill="var(--bunny)"/>
+        <ellipse cx="68" cy="80" rx="10" ry="14" fill="var(--bunny)"/>
+      </svg>
+    </div>
+
+    <a class="rsvp" href="https://wa.me/56951438154?text=Confirmo%20mi%20asistencia%20al%20baby%20shower" target="_blank" rel="noopener">
+      Confirma tu asistencia
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+</html>
